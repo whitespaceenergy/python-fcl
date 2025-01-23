@@ -1,10 +1,13 @@
 # exit immediately on any failed step
 set -xe
 pip install cmake
-brew install eigen
 
 mkdir -p deps
 cd deps
+
+curl -OL https://gitlab.com/libeigen/eigen/-/archive/3.3.9/eigen-3.3.9.tar.gz
+tar -zxf eigen-3.3.9.tar.gz
+mv eigen-3.3.9 eigen
 
 rm -rf libccd
 git clone --depth 1 --branch v2.1 https://github.com/danfis/libccd.git
@@ -16,7 +19,7 @@ rm -rf fcl
 git clone --depth 1 --branch v0.7.0 https://github.com/ambi-robotics/fcl.git
 
 # Install eigen
-cmake -B build -S eigen-3.3.9
+cmake -B build -S eigen
 cmake --install build
 
 # Build and install libccd
