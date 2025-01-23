@@ -1,5 +1,6 @@
 # exit immediately on any failed step
 set -xe
+pip install cmake
 
 mkdir -p deps
 cd deps
