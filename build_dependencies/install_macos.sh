@@ -1,7 +1,7 @@
 # exit immediately on any failed step
 set -xe
 pip install cmake
-brew install eigen3
+brew install eigen
 
 mkdir -p deps
 cd deps
