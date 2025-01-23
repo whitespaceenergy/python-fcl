@@ -1,12 +1,10 @@
 # exit immediately on any failed step
 set -xe
 pip install cmake
+brew install eigen3
 
 mkdir -p deps
 cd deps
-
-curl -OL https://gitlab.com/libeigen/eigen/-/archive/3.3.9/eigen-3.3.9.tar.gz
-tar -zxf eigen-3.3.9.tar.gz
 
 rm -rf libccd
 git clone --depth 1 --branch v2.1 https://github.com/danfis/libccd.git
