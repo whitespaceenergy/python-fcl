@@ -761,10 +761,10 @@ cdef class DistanceFunction:
         (&dist)[0] = <double?> py_r[1]
         return <bool?> py_r[0]
 
-cdef inline bool CollisionCallBack(defs.CollisionObjectd*o1, defs.CollisionObjectd*o2, void*cdata):
+cdef inline bool CollisionCallBack(defs.CollisionObjectd*o1, defs.CollisionObjectd*o2, void*cdata) noexcept:
     return (<CollisionFunction> cdata).eval_func(o1, o2)
 
-cdef inline bool DistanceCallBack(defs.CollisionObjectd*o1, defs.CollisionObjectd*o2, void*cdata, double& dist):
+cdef inline bool DistanceCallBack(defs.CollisionObjectd*o1, defs.CollisionObjectd*o2, void*cdata, double& dist) noexcept:
     return (<DistanceFunction> cdata).eval_func(o1, o2, dist)
 
 
