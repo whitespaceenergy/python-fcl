@@ -19,6 +19,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           path: ./wheelhouse/*.whl
+          name: wheels-${{ matrix.runs-on }}
 
   upload_pypi:
     name: Release To PyPi
@@ -33,9 +34,9 @@ jobs:
 
     - uses: actions/download-artifact@v4
       with:
-        name: artifact
         path: dist
-
+        pattern: wheels-*
+        merge-multiple: true
     - uses: pypa/gh-action-pypi-publish@v1.8.10
 
   create_release:
@@ -54,8 +55,9 @@ jobs:
           echo "tag_name=${VER}" >> $GITHUB_OUTPUT
       - uses: actions/download-artifact@v3
         with:
-          name: artifact
           path: dist
+          pattern: wheels-*
+          merge-multiple: true
       - uses: ncipollo/release-action@v1.14.0
         with:
           artifacts: "dist/*"
