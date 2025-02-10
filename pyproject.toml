@@ -107,7 +107,6 @@ archs = ["x86_64"]
 
 [tool.cibuildwheel.macos]
 before-all = "bash build_dependencies/install_macos.sh"
-environment = { CPATH = "$(brew --prefix)/include:$(brew --prefix)/include/eigen3", LD_LIBRARY_PATH = "$(brew --prefix)/lib" }
 repair-wheel-command = "delocate-wheel -w {dest_dir} -v {wheel}"
 
 [tool.cibuildwheel.windows]
