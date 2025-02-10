@@ -15,7 +15,7 @@ jobs:
           python-version: "3.12"
       - name: ruff
         run: |
-          pip install ruff
+          pip install ruff==0.9.6
           ruff check .
 
   build_wheels:
