@@ -19,7 +19,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           path: ./wheelhouse/*.whl
-          name: wheels-${{ matrix.runs-on }}
+          name: wheels-${{ matrix.platform }}
 
   upload_pypi:
     name: Release To PyPi
