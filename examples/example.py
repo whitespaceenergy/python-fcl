@@ -1,5 +1,6 @@
-import fcl
 import numpy as np
+
+import fcl
 
 
 def print_collision_result(o1_name, o2_name, result):
