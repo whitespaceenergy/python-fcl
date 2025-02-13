@@ -38,7 +38,8 @@ jobs:
         pattern: wheels-*
         merge-multiple: true
     - uses: pypa/gh-action-pypi-publish@v1.8.10
-
+      with:
+        password: ${{ secrets.PYPI_API_TOKEN }}
   create_release:
     name: Create GitHub Release
     runs-on: ubuntu-latest
