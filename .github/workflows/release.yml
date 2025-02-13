@@ -54,11 +54,11 @@ jobs:
         run: |
           export VER=v$(python -c "exec(open('src/fcl/version.py','r').read());print(__version__)")
           echo "tag_name=${VER}" >> $GITHUB_OUTPUT
-      - uses: actions/download-artifact@v3
-        with:
-          path: dist
-          pattern: wheels-*
-          merge-multiple: true
+    - uses: actions/download-artifact@v4
+      with:
+        path: dist
+        pattern: wheels-*
+        merge-multiple: true
       - uses: ncipollo/release-action@v1.14.0
         with:
           artifacts: "dist/*"
